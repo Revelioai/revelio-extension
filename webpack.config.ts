@@ -19,6 +19,7 @@ const excludedDirectories = [/node_modules/, /dev-app/, /\.stories\.tsx$/];
 const options: Configuration = {
   mode: mode,
   entry: {
+    popup: path.join(__dirname, 'src', 'pages', 'Popup', 'index.tsx'),
     walletpopup: path.join(__dirname, 'src', 'pages', 'WalletPopup', 'index.tsx'),
     background: path.join(__dirname, 'src', 'scripts', 'background.ts'),
     attach: path.join(__dirname, 'src', 'scripts', 'attach.ts'),
@@ -143,6 +144,13 @@ const options: Configuration = {
       template: path.join(__dirname, 'src', 'pages', 'WalletPopup', 'index.html'),
       filename: 'walletpopup.html',
       chunks: ['walletpopup'],
+      cache: false,
+    }),
+
+    new HtmlPlugin({
+      template: path.join(__dirname, 'src', 'pages', 'Popup', 'index.html'),
+      filename: 'popup.html',
+      chunks: ['popup'],
       cache: false,
     }),
   ],

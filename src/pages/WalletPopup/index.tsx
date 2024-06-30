@@ -5,7 +5,7 @@ import { TransactionEvent } from '../../types/internal';
 import { apiBaseUrl } from '../../environments/api';
 import magic from '../../assets/img/magic.png';
 import logoWide from '../../assets/img/logos/revelio-wide.png';
-import '../../assets/css/popup.css';
+import '../../assets/css/walletpopup.css';
 
 function WalletPopup() {
   const [explanation, setExplanation] = React.useState<Explanation>();

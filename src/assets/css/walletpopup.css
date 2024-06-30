@@ -1,0 +1,124 @@
+body * {
+  display: block;
+}
+
+html {
+  background: linear-gradient(59deg, #101318 0%, #1a1c21 100%), #f0f2f6;
+  color: white;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: lighter;
+  text-align: center;
+}
+
+p {
+  font-size: 14px;
+  font-weight: lighter;
+}
+
+p.micro {
+  font-size: 10px;
+  text-align: center;
+}
+
+.subtitle {
+  width: min-content;
+  padding: 10px;
+  background: var(--light-dark-252, rgba(255, 255, 255, 0.02));
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.subtitle.with-icon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.subtitle span {
+  font-weight: bold;
+  color: #fce803;
+}
+
+#images-section {
+  margin-top: 10%;
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+#images-section > img:first-child {
+  margin: 0;
+}
+
+#images-section > img {
+  border-radius: 50%;
+  margin-left: -30px;
+}
+
+#explanation-section {
+}
+
+#explanation-container {
+  margin-top: 20px;
+  padding: 20px 20px 10px 20px;
+  border: 1px solid var(--light-dark-252, rgba(255, 255, 255, 0.02));
+  background: var(--light-dark-252, rgba(255, 255, 255, 0.02));
+}
+
+#footer {
+  padding: 24px;
+}
+
+#footer > img {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#footer img {
+  height: 24px;
+}
+
+.loader {
+  transform: translate(-50%, -50%);
+  position: fixed;
+  left: 50%;
+  top: 50%;
+
+  width: 85px;
+  height: 50px;
+  --g1: conic-gradient(from 90deg at left 3px top 3px, #0000 90deg, #fce803 0);
+  --g2: conic-gradient(from -90deg at bottom 3px right 3px, #0000 90deg, #fce803 0);
+  background: var(--g1), var(--g1), var(--g1), var(--g2), var(--g2), var(--g2);
+  background-position: left, center, right;
+  background-repeat: no-repeat;
+  animation: l9 1s infinite;
+}
+
+@keyframes l9 {
+  0% {
+    background-size: 25px 50%, 25px 50%, 25px 50%;
+  }
+  25% {
+    background-size: 25px 100%, 25px 50%, 25px 50%;
+  }
+  50% {
+    background-size: 25px 50%, 25px 100%, 25px 50%;
+  }
+  75% {
+    background-size: 25px 50%, 25px 50%, 25px 100%;
+  }
+  100% {
+    background-size: 25px 50%, 25px 50%, 25px 50%;
+  }
+}
