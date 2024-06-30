@@ -21,8 +21,10 @@ const options: Configuration = {
   entry: {
     walletpopup: path.join(__dirname, 'src', 'pages', 'WalletPopup', 'index.tsx'),
     background: path.join(__dirname, 'src', 'scripts', 'background.ts'),
-    content: path.join(__dirname, 'src', 'scripts', 'index.ts'),
     attach: path.join(__dirname, 'src', 'scripts', 'attach.ts'),
+    'attach.content': path.join(__dirname, 'src', 'scripts', 'attach.content.ts'),
+    explorer: path.join(__dirname, 'src', 'scripts', 'explorer.ts'),
+    'explorer.content': path.join(__dirname, 'src', 'scripts', 'explorer.content.ts'),
   },
   output: {
     filename: '[name].bundle.js',

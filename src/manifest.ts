@@ -21,7 +21,7 @@ type Parameters = {
 function getParameters(env: Environments | undefined): Parameters {
   if (env === 'development') {
     return {
-      name: 'Nefture Dev',
+      name: 'Revelio Dev',
       icons: {
         '16': 'assets/logos/logo-dev.png',
         '32': 'assets/logos/logo-dev.png',
@@ -31,26 +31,24 @@ function getParameters(env: Environments | undefined): Parameters {
     };
   }
 
-  throw new Error('logos not setup yet');
-
   if (env === 'staging') {
     return {
-      name: 'Nefture Staging',
+      name: 'Revelio Staging',
       icons: {
-        '16': 'assets/logos/logo-staging16.png',
-        '32': 'assets/logos/logo-staging32.png',
-        '48': 'assets/logos/logo-staging48.png',
-        '128': 'assets/logos/logo-staging128.png',
+        '16': 'assets/logos/logo-staging.png',
+        '32': 'assets/logos/logo-staging.png',
+        '48': 'assets/logos/logo-staging.png',
+        '128': 'assets/logos/logo-staging.png',
       },
     };
   }
   return {
-    name: 'Nefture',
+    name: 'Revelio',
     icons: {
-      '16': 'assets/logos/logo-prod16.png',
-      '32': 'assets/logos/logo-prod32.png',
-      '48': 'assets/logos/logo-prod48.png',
-      '128': 'assets/logos/logo-prod128.png',
+      '16': 'assets/logos/logo-prod.png',
+      '32': 'assets/logos/logo-prod.png',
+      '48': 'assets/logos/logo-prod.png',
+      '128': 'assets/logos/logo-prod.png',
     },
   };
 }
@@ -63,7 +61,7 @@ export const manifest: Manifest.WebExtensionManifest = {
   manifest_version: 3,
   name,
   version: version,
-  description: 'TODO', // TODO
+  description: 'Starknet transactions will never be a mistery again',
   icons,
   background: {
     service_worker: 'background.bundle.js',
@@ -72,8 +70,15 @@ export const manifest: Manifest.WebExtensionManifest = {
   content_scripts: [
     {
       matches: ['http://*/*', 'https://*/*', '<all_urls>'],
-      js: ['content.bundle.js'],
+      js: ['attach.content.bundle.js'],
       css: [],
+      all_frames: true,
+      run_at: 'document_start',
+    },
+    {
+      matches: ['https://starkscan.co/tx/*', 'https://voyager.online/tx/*'],
+      js: ['explorer.content.bundle.js'],
+      css: ['assets/css/explorer.css'],
       all_frames: true,
       run_at: 'document_start',
     },
@@ -85,6 +90,10 @@ export const manifest: Manifest.WebExtensionManifest = {
   web_accessible_resources: [
     {
       resources: ['attach.bundle.js'],
+      matches: ['<all_urls>'],
+    },
+    {
+      resources: ['explorer.bundle.js'],
       matches: ['<all_urls>'],
     },
   ],

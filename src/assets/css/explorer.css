@@ -1,0 +1,59 @@
+.loading-animation {
+  height: 100px; /* Adjust the height as needed */
+  background-color: rgba(255, 255, 0, 0.66); /* Initial background color */
+  animation: fadeAnimation 2s infinite; /* Apply the animation */
+}
+
+.loading-animation.voyager {
+  margin-top: 24px;
+}
+
+@keyframes fadeAnimation {
+  0% {
+    background-color: rgba(255, 255, 0, 0.66); /* Start with yellow at 66% opacity */
+  }
+  50% {
+    background-color: rgba(255, 255, 0, 0); /* Fade to transparent */
+  }
+  100% {
+    background-color: rgba(255, 255, 0, 0.66); /* Return to yellow at 66% opacity */
+  }
+}
+
+#revelio-container {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+#revelio-container.starkscan {
+}
+
+#revelio-container.voyager {
+  margin-top: 24px;
+}
+
+#revelio-container.dark {
+  color: white;
+}
+
+#revelio-container > img {
+  margin: 12px 0px 12px 24px;
+  max-height: 64px;
+  max-width: 64px;
+  height: 100%;
+  width: 100%;
+}
+
+#revelio-container h2 {
+  font-weight: bold;
+  line-height: 1.3;
+}
+
+#revelio-container p {
+  font-size: 12px;
+}
+
+#revelio-container .explanation > p {
+  margin-top: 8px;
+}
