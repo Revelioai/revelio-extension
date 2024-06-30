@@ -81,6 +81,8 @@ We have developed a browser extension that makes calls to several API endpoints 
 }
 ```
 
+Please refer to the github repo [https://github.com/Revelioai/revelioai-api](https://github.com/Revelioai/revelioai-api) for the api implementation
+
 ## **Installation**
 
 1. **Download** Revelio AI extension zip file
