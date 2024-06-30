@@ -28,7 +28,6 @@ function wrapAccountExecute(account: Account | undefined) {
 
   const originalExecute = account.execute;
 
-  // TODO remove any
   const execute: typeof account.execute = async (calls, abis, transactionsDetail, ...args) => {
     console.log('calls', calls, 'abis', abis, 'transactionsDetail', transactionsDetail, 'args', args);
 
