@@ -1,1 +1,1 @@
-# starknet-extension
+# revelio-extension
