@@ -1,5 +1,5 @@
 import { apiBaseUrl } from '../environments/api';
-import { SimulationExplanation } from '../types/simulation';
+import { Explanation } from '../types/simulation';
 
 type Explorer = 'voyager' | 'starkscan';
 
@@ -82,7 +82,7 @@ async function fetchExplanation(txHash: string) {
     body: JSON.stringify({
       txHash,
     }),
-  }).then((res) => res.json() as Promise<SimulationExplanation>);
+  }).then((res) => res.json() as Promise<Explanation>);
   return response;
 }
 

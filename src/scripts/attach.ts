@@ -9,12 +9,13 @@ import { InternalMessage, InternalMessageType, TriggerType } from '../types/inte
 function triggerExtension(
   triggerType: TriggerType,
   calls: AllowArray<Call>,
-  abis?: Abi[],
-  transactionsDetail?: InvocationsDetails
+  walletAddress: string,
+  nonce: string,
+  abis?: Abi[]
 ) {
   const message: InternalMessage = {
     type: InternalMessageType.TransactionEvent,
-    event: { triggerType, calls, abis, transactionsDetail },
+    event: { triggerType, calls, walletAddress, abis, nonce },
   };
 
   const event = new CustomEvent('FromPage', { detail: message });
@@ -31,7 +32,9 @@ function wrapAccountExecute(account: Account | undefined) {
   const execute: typeof account.execute = async (calls, abis, transactionsDetail, ...args) => {
     console.log('calls', calls, 'abis', abis, 'transactionsDetail', transactionsDetail, 'args', args);
 
-    triggerExtension('execute', calls, abis, transactionsDetail);
+    const nonce = await account.getNonce();
+
+    triggerExtension('execute', calls, account.address, nonce, abis);
 
     try {
       return await originalExecute(calls, abis, transactionsDetail);

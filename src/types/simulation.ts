@@ -1,11 +1,7 @@
-export type SimulationExplanation = {
+export type Explanation = {
+  images: string[];
   title: string;
   purpose: string;
   explanation: string;
-  transfers: {
-    token: string;
-    amount: string; // decimal number string (or hex ??)
-    from: string;
-    to: string;
-  }[];
+  transfers: { token: string; from: string; to: string; amount: string }[];
 };

@@ -25,12 +25,12 @@ async function getPosition() {
 export const startExtension = async (event: TransactionEvent) => {
   console.log('event', event);
 
-  const { triggerType, calls, abis, transactionsDetail } = event;
+  const { triggerType, calls, abis, nonce, walletAddress } = event;
 
   if (triggerType === 'execute') {
     const { top, left } = await getPosition();
 
-    const data = JSON.stringify({ triggerType, calls, transactionsDetail, abis });
+    const data = JSON.stringify({ triggerType, calls, nonce, abis, walletAddress } satisfies TransactionEvent);
     const encodedData = encodeURIComponent(data);
 
     const popupUrl = `walletpopup.html?data=${encodedData}`;
@@ -44,7 +44,7 @@ export const startExtension = async (event: TransactionEvent) => {
       left,
       width: EXTENSION_WIDTH,
       height: EXTENSION_HEIGHT,
-      focused: false, // Wallets code usually position themselves according to latest focused window
+      focused: true, // Wallets code usually position themselves according to latest focused window
     });
   }
 };

@@ -3,11 +3,11 @@ import { Abi, AllowArray, Call, InvocationsDetails } from 'starknet';
 export type TriggerType = 'execute';
 
 export type TransactionEvent = {
-  // TODO create event
+  walletAddress: string;
   triggerType: TriggerType;
   calls: AllowArray<Call>;
+  nonce: string;
   abis?: Abi[];
-  transactionsDetail?: InvocationsDetails;
 };
 
 export enum InternalMessageType {

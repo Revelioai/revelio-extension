@@ -23,10 +23,10 @@ function getParameters(env: Environments | undefined): Parameters {
     return {
       name: 'Revelio Dev',
       icons: {
-        '16': 'assets/logos/logo-dev.png',
-        '32': 'assets/logos/logo-dev.png',
-        '48': 'assets/logos/logo-dev.png',
-        '128': 'assets/logos/logo-dev.png',
+        '16': 'assets/img/logos/logo-dev.png',
+        '32': 'assets/img/logos/logo-dev.png',
+        '48': 'assets/img/logos/logo-dev.png',
+        '128': 'assets/img/logos/logo-dev.png',
       },
     };
   }
@@ -35,20 +35,20 @@ function getParameters(env: Environments | undefined): Parameters {
     return {
       name: 'Revelio Staging',
       icons: {
-        '16': 'assets/logos/logo-staging.png',
-        '32': 'assets/logos/logo-staging.png',
-        '48': 'assets/logos/logo-staging.png',
-        '128': 'assets/logos/logo-staging.png',
+        '16': 'assets/img/logos/logo-staging.png',
+        '32': 'assets/img/logos/logo-staging.png',
+        '48': 'assets/img/logos/logo-staging.png',
+        '128': 'assets/img/logos/logo-staging.png',
       },
     };
   }
   return {
     name: 'Revelio',
     icons: {
-      '16': 'assets/logos/logo-prod.png',
-      '32': 'assets/logos/logo-prod.png',
-      '48': 'assets/logos/logo-prod.png',
-      '128': 'assets/logos/logo-prod.png',
+      '16': 'assets/img/logos/logo-prod.png',
+      '32': 'assets/img/logos/logo-prod.png',
+      '48': 'assets/img/logos/logo-prod.png',
+      '128': 'assets/img/logos/logo-prod.png',
     },
   };
 }
@@ -86,7 +86,7 @@ export const manifest: Manifest.WebExtensionManifest = {
   action: {
     default_popup: 'popup.html',
   },
-  permissions: ['storage', 'tabs'],
+  permissions: ['tabs'],
   web_accessible_resources: [
     {
       resources: ['attach.bundle.js'],
