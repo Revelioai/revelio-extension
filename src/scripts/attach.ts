@@ -48,13 +48,22 @@ function wrapAccountExecute(account: Account | undefined) {
   console.log('successfully wrapped execute');
 }
 
+const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
+
+let tries = 0;
 async function attach() {
+  tries++;
   const starknetAccount = (window as any).starknet.account as Account;
 
   if (starknetAccount) {
     wrapAccountExecute(starknetAccount);
   } else {
-    console.log('@ No wallet found');
+    if (tries < 5) {
+      await delay(500);
+      attach();
+    } else {
+      console.log('@ No wallet found');
+    }
   }
 }
 
