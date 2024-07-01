@@ -2,8 +2,8 @@ import { TransactionEvent } from '../types/internal';
 
 const WALLET_NOTIFICATION_WIDTH = 360;
 
-const EXTENSION_WIDTH = 400;
-const EXTENSION_HEIGHT = 600;
+const EXTENSION_WIDTH = 500;
+const EXTENSION_HEIGHT = 750;
 
 async function getPosition() {
   const latestWindow = await chrome.windows.getLastFocused();
