@@ -3,6 +3,7 @@
 ## Project Title
 
 Revelio AI: Explaining Transaction Data with AI on Starknet
+![revelio-1.png](images/revelio-1.png)
 
 ## Introduction
 
