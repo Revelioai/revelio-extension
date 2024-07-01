@@ -26,6 +26,16 @@ We decided to create the perfect co-pilot package for Starknet users to improve 
 
 This dual approach led us to develop two complementary products: an interactive browser extension and a transaction explanation tool on block explorers. It is crucial for users to freely explore other aspects of the Starknet ecosystem on block explorers, as improving their overall visibility and understanding of all kinds of transactions will empower them to be more proactive in experimenting and using Starknet. Enhanced comprehension leads to increased confidence and willingness to engage more deeply with the ecosystem, ultimately leading to greater adoption and innovation within Starknet.
 
+### **🌟 Transaction Explanations on Block Explorers**
+
+**Description**: RevelioAI offers clear and comprehensive explanations for most transactions displayed on the Transaction Details page of Starknet Explorers. This feature provides a detailed overview of the main actions taken, making on-chain analysis more accessible and understandable.
+
+**Benefits**: These explanations encompass the main actions taken and provide essential security-related information. This intelligent service, powered by GPT, serves as a valuable reference for on-chain analysis, providing insightful explanations for most transactions and enhancing the understanding of the Starknet ecosystem.
+
+**How does it work**: By clicking the **Explain with RevelioAI** button, users can trigger the explanation of any transaction on Starknet. We also allow users to copy the explanation, as well as like or dislike it to provide feedback, which will help us continually improve the quality of our explanations.
+
+![Transaction explanaiton.png](images/Transaction_explanaiton.png)
+
 ### **🌟 Interactive Browser Extension for Real-Time Transaction Insights**
 
 **Description**: The RevelioAI browser extension offers real-time explanations before users make a transaction on Starknet.
@@ -36,15 +46,6 @@ This dual approach led us to develop two complementary products: an interactive 
 
 ![revelio.png](images/revelio.png)
 
-### **🌟 Transaction Explanations on Block Explorers**
-
-**Description**: RevelioAI offers clear and comprehensive explanations for most transactions displayed on the Transaction Details page of Starknet Explorers. This feature provides a detailed overview of the main actions taken, making on-chain analysis more accessible and understandable.
-
-**Benefits**: These explanations encompass the main actions taken and provide essential security-related information. This intelligent service, powered by GPT, serves as a valuable reference for on-chain analysis, providing insightful explanations for most transactions and enhancing the understanding of the Starknet ecosystem.
-
-**How does it work**: By clicking the **Explain with RevelioAI** button, users can trigger the explanation of any transaction on Starknet. We also allow users to copy the explanation, as well as like or dislike it to provide feedback, which will help us continually improve the quality of our explanations.
-
-![Transaction explanaiton.png](images/Transaction_explanaiton.png)
 
 ## **Architecture and How it Works**
 
@@ -102,7 +103,7 @@ Please refer to the github repo [https://github.com/Revelioai/revelioai-api](htt
 
 ## UI Example
 
-[https://www.notion.so](https://www.notion.so)
+![screenshot1](images/screenshot1.png)
 
 ## Technology Stack
 
