@@ -47,7 +47,6 @@ This dual approach led us to develop two complementary products: an interactive 
 
 ![revelio.png](images/revelio.png)
 
-
 ## **Architecture and How it Works**
 
 We have developed a browser extension that makes calls to several API endpoints deployed on AWS Lamba:
@@ -87,7 +86,7 @@ Please refer to the github repo [https://github.com/Revelioai/revelioai-api](htt
 
 ## **Installation**
 
-1. **Download** Revelio AI extension zip file
+1. **Download** Revelio AI extension zip file [here](https://github.com/Revelioai/revelio-extension/releases)
 2. **Open** your browser and navigate to Extensions
 3. **Load** the extension into your Browser/Manage Extensions/Load unpacked
 

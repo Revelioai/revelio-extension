@@ -35,8 +35,7 @@ function createRevelioBox(title: string, explanation: string, explorer: Explorer
 
   const logo = document.createElement('img');
 
-  logo.src =
-    'https://cdn.discordapp.com/attachments/1254423199723159624/1256754844044234782/Icon_Showcase.png?ex=6681eba8&is=66809a28&hm=ed0d563a68b9b7ac5685d5215688124341277769ec27ad91aababcf3f7b737f5&';
+  logo.src = 'https://i.ibb.co/FYwGpKX/Icon-Showcase.png';
 
   revelioBox.appendChild(logo);
 
