@@ -5,6 +5,9 @@
 Revelio AI: Explaining Transaction Data with AI on Starknet
 ![revelio-1.png](images/revelio-1.png)
 
+
+Revelio Chrome Extension page: [Revelio Chrome Extension](https://chromewebstore.google.com/detail/revelio/fijkabbbpopdldafhjnpkhpeeegkohdm?authuser=0&hl=en)
+
 ## Introduction
 
 Welcome to RevelioAI, the innovative extension that empowers Starknet users by transforming complex transaction data into easy-to-understand English sentences. Built with the power of AI, RevelioAI acts as a co-pilot, guiding users through the intricacies of Starknet transactions with clarity and simplicity.
@@ -86,6 +89,8 @@ Please refer to the github repo [https://github.com/Revelioai/revelioai-api](htt
 
 ## **Installation**
 
+Get it from the chrome extension page [Revelio Chrome Extension](https://chromewebstore.google.com/detail/revelio/fijkabbbpopdldafhjnpkhpeeegkohdm?authuser=0&hl=en)
+Or:
 1. **Download** Revelio AI extension zip file [here](https://github.com/Revelioai/revelio-extension/releases)
 2. **Open** your browser and navigate to Extensions
 3. **Load** the extension into your Browser/Manage Extensions/Load unpacked
