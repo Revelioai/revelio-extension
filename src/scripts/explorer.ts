@@ -1,7 +1,7 @@
 import { apiBaseUrl } from '../environments/api';
 import { Explanation } from '../types/simulation';
 
-type Explorer = 'voyager' | 'starkscan';
+type Explorer = 'voyager' | 'starkscan' | 'scrollscan';
 
 const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
@@ -85,11 +85,23 @@ async function fetchExplanation(txHash: string) {
   return response;
 }
 
+async function fetchExplanationByText(transactionText: string) {
+  const response = await fetch(`${apiBaseUrl}/explainTransaction`, {
+    method: 'POST',
+    body: JSON.stringify({
+      transactionText,
+    }),
+  }).then((res) => res.json() as Promise<Explanation>);
+  return response;
+}
+
 function getExplorer(url: string): Explorer {
   if (url.startsWith('https://voyager.online')) {
     return 'voyager';
   } else if (url.startsWith('https://starkscan.co')) {
     return 'starkscan';
+  } else if (url.startsWith('https://scrollscan.com')) {
+    return 'scrollscan';
   }
   throw new Error("Couldn't find explorer");
 }
@@ -97,13 +109,84 @@ function getExplorer(url: string): Explorer {
 const explorerSelector: { [key in Explorer]: string } = {
   starkscan: '#__next > div > main > div > div',
   voyager: 'div#root-child > div > div:nth-child(3) > div > div',
+  scrollscan: 'div.card.p-5.mb-3', //TODO
 };
+
+function extractVisibleText(doc: Element): string {
+  // Helper function to recursively extract visible text from nodes
+  function getTextContent(node: Node): string {
+    if (node.nodeType === Node.TEXT_NODE) {
+      // Return text content if it's a text node
+      return node.textContent?.trim() || '';
+    } else if (node.nodeType === Node.ELEMENT_NODE) {
+      const element = node as HTMLElement;
+
+      // Skip hidden elements
+      const style = window.getComputedStyle(element);
+      if (style.display === 'none' || style.visibility === 'hidden') {
+        return '';
+      }
+
+      // Recursively get text content of child nodes
+      return Array.from(node.childNodes).map(getTextContent).join(' ');
+    }
+    return '';
+  }
+
+  // Start from the body of the parsed document
+  return getTextContent(doc).replace(/\s+/g, ' ').trim(); // Normalize whitespace
+}
+
+async function extractScrollTxDescriptionAsString(): Promise<string> {
+  const container = document.querySelector('div.card.p-5.mb-3');
+  if (container === null) throw new Error("Couldn't find the right scroll container for Revelio...");
+  const c = container.cloneNode(true) as Element;
+  // fetch transfers
+  const transfers = c.querySelectorAll('div.to-address-col span[data-highlight-target^="0x"]');
+  const filteredTransfers = Array.from(transfers).filter((span) => span.textContent!.trim().startsWith('0x'));
+
+  const nameMapping: Record<string, string> = {};
+  for (const t of filteredTransfers) {
+    const address = t.getAttribute('data-highlight-target')!;
+    if (nameMapping[address]) {
+      t.textContent = nameMapping[address];
+      continue;
+    }
+    try {
+      const res = await fetch(`https://scrollscan.com/token/${address}`);
+      console.log(address);
+      const text = await res.text();
+      const title = text
+        .match(/<title>(.*?)<\/title>/is)![1]
+        .trim()
+        .split('Token Tracker |')[0]
+        .trim();
+      if (title != '()') {
+        nameMapping[address] = title;
+        t.textContent = title;
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  const txDescriptionString = extractVisibleText(c); //c.outerHTML;
+  console.log(JSON.stringify(txDescriptionString));
+  return txDescriptionString;
+}
 
 async function display() {
   const explorer = getExplorer(document.URL);
 
-  const txHash = extractTransactionHash(document.URL);
-  const explanationPromise = fetchExplanation(txHash);
+  let explanationPromise: Promise<Explanation>;
+
+  if (explorer == 'scrollscan') {
+    const transactionText = await extractScrollTxDescriptionAsString();
+    explanationPromise = fetchExplanationByText(transactionText);
+  } else {
+    const txHash = extractTransactionHash(document.URL);
+    explanationPromise = fetchExplanation(txHash);
+  }
 
   await delay(1000);
 
@@ -114,6 +197,7 @@ async function display() {
   insertChildAtIndex(container, loadingBox, 1);
 
   const explanation = await explanationPromise;
+  console.log(explanation);
 
   const revelioBox = createRevelioBox(explanation.title, explanation.explanation, explorer);
 

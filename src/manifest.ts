@@ -76,7 +76,7 @@ export const manifest: Manifest.WebExtensionManifest = {
       run_at: 'document_start',
     },
     {
-      matches: ['https://starkscan.co/tx/*', 'https://voyager.online/tx/*'],
+      matches: ['https://starkscan.co/tx/*', 'https://voyager.online/tx/*', 'https://scrollscan.com/tx/*'],
       js: ['explorer.content.bundle.js'],
       css: ['assets/css/explorer.css'],
       all_frames: true,
